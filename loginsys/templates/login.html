@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block login%}
+    <div class="large-offset-3 large-6 columns">
+        <form action="/auth/login/" method="post">
+            {% csrf_token %}
+            <label for="username">Ім'я користувача</label>
+            <input typeof="text" name="username" id="username">
+            <label for="password">Пароль</label>
+            <input type="password" name="password" id="password">
+            {% if login_error %}
+                <label class="error">{{login_error}}</label>
+            {% endif %}
+            <input class="button" type="submit" value="Увійти">
+            <div class="label round secondary"><a href="/auth/register/">Реєстрація</a> </div>
+        </form>
+    </div>
+{% endblock %}
